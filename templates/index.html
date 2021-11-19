@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block contant %}
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add Product</h1>
+    </div>
+    <div class="row">
+
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">ADD</h6>
+                </div>
+                <!-- contant -->
+                <div class="container">
+                    <table class="table table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Selling Price</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for pro in product %}
+                            <tr>
+                                <td>{{ pro.name }}</td>
+                                <td>{{ pro.code }}</td>
+                                <td>{{ pro.selling_price }}</td>
+                                <td><a href="{% url 'product_edit' product_id=pro.id %}">edit</a></td>
+                                <td><a href="{% url 'product_delete' product_id=pro.id %}">delete</a></td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
