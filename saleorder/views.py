@@ -42,9 +42,7 @@ def new_add(request,**kwargs):
     context['form'] = sale_invoice
     if request.POST:
         data = NewSaleInvoice(request.POST)
-        print(data.errors)
         if data.is_valid():
-            print('data_is_valid')
             sale_invoice_obj = SaleInvoice.objects.create()
             sale_invoice_obj.invoice_number = data.cleaned_data['invoice_number']
             sale_invoice_obj.customer_name = data.cleaned_data['customer_name']
@@ -64,8 +62,10 @@ def new_add(request,**kwargs):
 
 def edit(request,**kwargs):
     pass
-def delete(request,**kwargs):
-    pass
+def delete(request,invoice_id,**kwargs):
+    Invoice = SaleInvoice.objects.get(pk=invoice_id)
+    Invoice.delete()
+    return redirect('sale_invoice_index')
 def view(request,invoice_id,**kwargs):
     sale_invoice_details = SaleInvoiceDetails.objects.filter(sale_invoice_id=invoice_id)
     date = None
