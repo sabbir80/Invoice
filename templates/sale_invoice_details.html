@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block contant %}
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <strong>Invoice</strong>
+                {{ date }}
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-sm-6">
+                        <h6 class="mb-3"><strong>Invoice</strong>:{{ invoice }}</h6>
+                        <div>
+                            <strong>{{ customer }}</strong>
+                        </div>
+                        <div>Madalinskiego 8</div>
+                        <div>71-101 Szczecin, Poland</div>
+                        <div>Email: info@dotnettec.com</div>
+                        <div>Phone: +91 9800000000</div>
+                    </div>
+
+                </div>
+
+                <div class="table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="right">Unit Cost</th>
+                                <th class="center">Qty</th>
+                                <th class="right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in invoice_details %}
+                            <tr>
+                                <td class="left strong">{{ i.product_name }}</td>
+                                <td class="right">{{i.unit_price}}</td>
+                                <td class="center">{{ i.quantity}}</td>
+                                <td class="right">{{ i.amount }}</td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-5">
+
+                    </div>
+
+                    <div class="col-lg-4 col-sm-5 ml-auto">
+                        <table class="table table-clear">
+                            <tbody>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Grandtotal</strong>
+                                    </td>
+                                    <td class="right">৳{{grandtotal}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

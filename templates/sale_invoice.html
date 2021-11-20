@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
 {% block contant %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create Sale Invoice</h1>
+</div>
+<div class="row">
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+            <!-- contant -->
+            <div class="d-flex p-2">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Save">
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
 {% endblock %}

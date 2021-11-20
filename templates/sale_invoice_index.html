@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block contant %}
+
+                <div class="container">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Sale Invoice List</h1>
+    </div>
+                    <table class="table table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col">Invoice Number</th>
+                            <th scope="col">Invoice Date</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Total Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for pro in invoice %}
+                            <tr>
+                                <td><a href="{% url 'sale_invoice_details' invoice_id=pro.id %}">{{ pro.invoice_number }}</a></td>
+                                <td>{{ pro.invoice_date }}</td>
+                                <td>{{ pro.customer_name }}</td>
+                                <td>{{ pro.total_amount }}</td>
+
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+{% endblock %}

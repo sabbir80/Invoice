@@ -3,13 +3,15 @@ from product.models import Product
 import django
 # Create your models here.
 class SaleInvoice(models.Model):
-    invoice_number = models.CharField(max_length=200,null=True,default=None)
+    invoice_number = models.CharField(max_length=200, null=True, default=None)
     invoice_date = models.DateField(default=django.utils.timezone.now)
-    customer_name = models.CharField(max_length=200,null=True,default=None)
-    total_amount = models.IntegerField(default=0,null=True)
-    def __str__(self):
-        self.invoice_number
+    customer_name = models.CharField(max_length=200, null=True, default=None)
+    total_amount = models.IntegerField(default=0, null=True)
 
+    def __str__(self):
+        display=''
+        display += self.invoice_number+'-'+self.customer_name
+        return display
 
 class SaleInvoiceDetails(models.Model):
     sale_invoice_id = models.ForeignKey(SaleInvoice, default=None,null=True, on_delete=models.SET_NULL)

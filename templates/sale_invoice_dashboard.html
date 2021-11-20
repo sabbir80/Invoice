@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block contant %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create Sale Invoice</h1>
+</div>
+<div class="row">
+  <div class="container">
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-header">
+          <h5>New Sale Invoice</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Create a New Sale Invoice</p>
+          <a href="{% url 'new_sale_invoice_add' %}" class="btn btn-primary">New Sale Invoice</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h5>Existing Sale Invoice</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Sale in Existing Invoice</p>
+          <a href="{% url 'sale_invoice_add' %}" class="btn btn-primary">Existing Sale Invoice</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
