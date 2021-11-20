@@ -1,0 +1,1 @@
+web: gunicorn saleinvoice.wsgi --log-file -
