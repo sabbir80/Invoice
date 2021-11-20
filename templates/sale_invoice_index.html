@@ -17,7 +17,7 @@
                         <tbody>
                         {% for pro in invoice %}
                             <tr>
-                                <td><a href="{% url 'sale_invoice_details' invoice_id=pro.id %}">{{ pro.invoice_number }}</a></td>
+                                <td><a href="{% url 'sale_invoice_details' invoice_id=pro.id %}" class="btn btn-info">{{ pro.invoice_number }}</a></td>
                                 <td>{{ pro.invoice_date }}</td>
                                 <td>{{ pro.customer_name }}</td>
                                 <td>{{ pro.total_amount }}</td>

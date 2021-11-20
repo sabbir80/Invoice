@@ -11,7 +11,8 @@
                 <th scope="col">Name</th>
                 <th scope="col">Code</th>
                 <th scope="col">Selling Price</th>
-                <th scope="col">Action</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -20,8 +21,8 @@
                     <td>{{ pro.name }}</td>
                     <td>{{ pro.code }}</td>
                     <td>{{ pro.selling_price }}</td>
-                    <td><a href="{% url 'product_edit' product_id=pro.id %}">edit</a></td>
-                    <td><a href="{% url 'product_delete' product_id=pro.id %}">delete</a></td>
+                    <td><a href="{% url 'product_edit' product_id=pro.id %}" class="btn btn-outline-warning">edit</a></td>
+                    <td><a href="{% url 'product_delete' product_id=pro.id %}" class="btn btn-danger">delete</a></td>
 
                 </tr>
             {% endfor %}

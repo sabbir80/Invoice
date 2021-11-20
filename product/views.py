@@ -14,14 +14,15 @@ def add(request,**kwargs):
             data.save()
     return render(request,'add.html',{'product':product_form})
 def edit(request,product_id,**kwargs):
-    prodcut = Product.objects.get(pk=product_id)
-    product_form = ProductForm(instance=prodcut)
+    product = Product.objects.get(pk=product_id)
+    product_form = ProductForm(instance=product)
     if request.POST:
-        data = ProductForm(request.POST,instance=prodcut)
+        data = ProductForm(request.POST,instance=product)
         if data.is_valid():
             data.save()
             return redirect('index')
-    return render(request,'add.html',{'product':product_form})
+    return render(request,'add.html',{'product':product_form,
+                                      'product_list':product})
 
 
 def delete(request,product_id,**kwargs):
