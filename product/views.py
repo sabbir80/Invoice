@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import ProductForm
 from .models import *
+from django.contrib import messages
+
 # Create your views here.
 def index(request,**kwargs):
     data = Product.objects.all()
@@ -12,6 +14,10 @@ def add(request,**kwargs):
         data = ProductForm(request.POST)
         if data.is_valid():
             data.save()
+            messages.info(request,'Product Create Successfully', extra_tags='alert')
+        else:
+            messages.warning(request,'Product Create Failed', extra_tags='alert')
+
     return render(request,'add.html',{'product':product_form})
 def edit(request,product_id,**kwargs):
     product = Product.objects.get(pk=product_id)
@@ -28,6 +34,7 @@ def edit(request,product_id,**kwargs):
 def delete(request,product_id,**kwargs):
     product = Product.objects.get(pk=product_id)
     product.delete()
+    messages.error(request,'Product Deleted!!!')
     return redirect('index')
 
 def view(request,product_id,**kwargs):
